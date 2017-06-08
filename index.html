@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Race Animation</title>
+<style type="text/css">
+	video{
+		margin: 0 auto;
+		padding: 0 auto;
+		border: none;
+		height: 300px;
+	}
+	h1{
+		font-family: arial;
+		color: orange;
+		position: absolute;
+		margin-top: 1px;
+	}
+
+	#container{
+		width: 1300px;
+		height: 1000px;
+		margin-left: -2px;
+		position: relative;
+		background: transparent;
+	}
+
+	#vindiesel{
+		width: 10%;
+		height: 20%;
+		position: absolute;
+		background-image: url("images/fastandfurious.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		top: 30px;
+	}
+
+	#bolt{
+		width: 10%;
+		height: 20%;
+		position: absolute;
+		margin-top: 100px;
+		background-image: url("images/bolt.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		top: 40px;
+	}
+
+	#flash{
+		width: 8%;
+		height: 15%;
+		position: absolute;
+		margin-top: 200px;
+		background-image: url("images/flash.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;	
+		top: 60px;	
+	}
+	#dog{
+		width: 8%;
+		height: 15%;
+		position: absolute;
+		margin-top: 350px;
+		background-image: url("images/dog.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		top: 80px;		
+	}
+	.loop{
+		transform: translate(0%, 10%);
+	}
+	.loopone{
+		transform: translate(-4%, 10%);
+	}
+	.looptwo{
+		transform: translate(-5%, 10%);
+	}
+	.skyrace{
+		position: absolute;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-width: 100%;
+		min-height:100%;
+		width: auto;
+		height: auto;
+		z-index: 0;
+	}
+
+
+</style>
+</head>
+<body>
+
+	<div class="thesky">
+		<video class ="skyrace" autoplay="true" loop>
+			<source src="sky.mp4" type="video/mp4">
+			<source src="sky.webm" type="video/webm">
+		</video>
+	</div>
+	<h1>Hero Race, Who Will Win?<button onclick="Startone()">Start Race</button></h1></br>
+	<div id="crowd">
+		<video autoplay="true" loop class="loop">
+			<source src="crowd.mp4" type="video/mp4">
+			<source src="crowd.webm" type="video/webm">
+		</video>
+		<video autoplay="true" loop class="loopone">
+			<source src="crowd.mp4" type="video/mp4">
+			<source src="crowd.webm" type="video/webm">
+		</video>
+		<video autoplay="true" loop class="looptwo">
+			<source src="crowd.mp4" type="video/mp4">
+			<source src="crowd.webm" type="video/webm">
+		</video>
+	</div>
+
+	<div id="container">
+		<div id="vindiesel"></div>
+		<div id="bolt"></div>
+		<div id="flash"></div>
+		<div id="dog"></div>
+	</div>
+
+<script>
+	function Startone(){
+		var elem = document.getElementById("vindiesel");
+		var positionA = 0;
+			Starttwo();
+			Startthree();
+			Startfour();
+		var id = setInterval(frame, 8); 
+		function frame(){
+			if (positionA !== 1170){
+				positionA++;
+				elem.style.left = positionA + 'px';
+			}
+			else {
+				clearInterval(id);
+			}
+		}
+	}
+	function Starttwo(){
+		var elem = document.getElementById("bolt");
+		var positionC = 0;
+		var positionD = 0;
+
+		var id = setInterval(frame, 7); 
+		function frame(){
+			if (positionC !== 1180){
+				positionC++;
+				elem.style.left = positionC + 'px';
+			}
+			else if(positionD !== 1180){
+				positionD++;
+				elem.style.right = positionD + 'px';
+			}
+			else {
+				clearInterval(id);
+			}
+		}
+	}		
+		
+	function Startthree(){
+		var elem = document.getElementById("flash");
+		var positionE = 0;
+		var positionF = 0;
+
+		var id = setInterval(frame, 9);
+		function frame(){
+			if (positionE !== 1180){
+				positionE++;
+				elem.style.left = positionE + 'px';
+			}
+			else if(positionF == 1180){
+				positionF++;
+				elem.style.right = positionF + 'px';
+			}
+			else {
+				clearInterval(id);
+			}
+		}
+	}
+
+	function Startfour(){
+		var elem = document.getElementById("dog");
+		var positionG = 0;
+		var positionH = 0;
+
+		var id = setInterval(frame, 1);
+		function frame(){
+			if (positionG !== 1180){
+				positionG++;
+				elem.style.left = positionG + 'px';
+			}
+			else if(positionH == 1180){
+				positionH++;
+				elem.style.right = positionH + 'px';
+			}
+			else {
+				clearInterval(id);
+			}
+		}
+	}
+</script>
+
+</body>
+</html>
